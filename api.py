@@ -57,7 +57,7 @@ def create_user():
 @app.route('/api/login', methods=['GET', 'POST'])  
 def login_user(): 
   auth = request.authorization   
-  if not auth or not auth. or not auth.pwd:  
+  if not auth or not auth.nme or not auth.pwd:  
      return make_response('could not verify', 401, { "login required"'})    
   user = Users.query.filter_by(nme=auth.nme).first()  
   if check_password_hash(user.pwd, auth.pwd):  
