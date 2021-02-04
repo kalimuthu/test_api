@@ -1,0 +1,22 @@
+version: '3'
+services: 
+    product-service:
+        build: ./test_api/
+        volumes:
+            - ./test_api/:/usr/src/app/
+        ports: 
+            - 5000:5000
+        environment: 
+            PORT: 5000
+            FLASK_DEBUG: 1
+        networks: 
+            - arpanet 
+    db:
+        image: postgres
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: admion
+        networks: 
+            - arpanet
+    networks: 
+        - arpanet
